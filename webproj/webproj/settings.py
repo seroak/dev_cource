@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 import os
+import django_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -19,6 +20,18 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
+
+DEBUG = False
+
+ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com']
+...
+MIDDLEWARE = [
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+    ...
+]
+...
+# Activate Django-Heroku.
+django_heroku.settings(locals())
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = "django-insecure-6!r^66znq2)s7-pajv9dryj^fyw+(ai(ao=4$q2h%m7kq68y*g"
